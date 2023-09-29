@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
     {
         
         // Ajout des contrats
-        $contracts = []; //tableau vide qui va récupérer tous les contrats sous forme d'entité
+        $contracts = []; //tableau vide qui va récupérer tous les contrats sous forme d'entité pour permettres de set la colonne contrat des utilisateurs
         foreach(self::CONTRACTS as $c) {
             $contract = new Contract();
             $contract->setName($c);
@@ -65,7 +65,7 @@ class AppFixtures extends Fixture
 
         // Je pensais au début récupérer tous les contrats et les secteurs grâce aux repo injetés dans le constructeur du loader
         // Mais ne fonctionne pas car vide au moment de l'exécution
-        // les repo injectés au moment de la construction donc trop tôt je pense
+        // les repo sont injectés au moment de la construction donc trop tôt je pense
         // $contracts = $this->contractRepository->findAll();
         // $sectors = $this->sectorRepository->findAll();
         
