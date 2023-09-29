@@ -15,22 +15,27 @@
 		{% block javascripts %}{% endblock %}
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg bg-body-dark">
+		<nav class="navbar navbar-expand-lg bg-dark text-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="{{ path("app_home") }}">Annuaire</a>
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav">
-						<a class="nav-link" href="{{ path("app_home") }}">Accueil</a>
-						<a class="nav-link" href="">Détail</a>
-
+				<a class="navbar-brand text-light" href="{{ path("app_home") }}">Annuaire</a>
+				<div class="navbar-nav w-100 justify-content-between">
+					<div class="d-flex">
+						<a class="nav-link text-light" href="{{ path("app_home") }}">Accueil</a>
+						<a class="nav-link text-light" href="">Détail</a>
+					</div>
+					<div>
+						{% if app.user %}
+							<a class="nav-link text-light" href="{{ path("app_logout") }}">Logout</a>
+						{% else %}
+							<a class="nav-link text-light" href="{{ path("app_login") }}">Login</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
 		</nav>
 
-		<div class="container"> 
-            {% block body %}{% endblock %}
-		</div>
+		<div class="container"> {% block body %}{% endblock %}
+			</div>
 
 		</body>
 	</html>
