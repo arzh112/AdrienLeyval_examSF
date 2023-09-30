@@ -7,6 +7,7 @@ use App\Entity\Sector;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,8 +22,13 @@ class UserType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('photo')
-            ->add('endDate')
-            ->add('sector')
+            ->add('endDate', DateType::class, [
+                'widget' => 'choice'
+            ])
+            ->add('sector', EntityType::class, [
+                'class' => Sector::class,
+                'choices' => 'name'
+            ])
             ->add('contract', EntityType::class, [
                 'class' => Contract::class,
                 'choices' => 'name'
