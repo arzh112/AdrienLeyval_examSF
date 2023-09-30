@@ -21,7 +21,10 @@
 				<div class="navbar-nav w-100 justify-content-between">
 					<div class="d-flex">
 						<a class="nav-link text-light" href="{{ path("app_home") }}">Accueil</a>
-						<a class="nav-link text-light" href="">Détail</a>
+						<a class="nav-link text-light" href="{{ path("app_user_list") }}">Liste</a>
+						{% if is_granted('ROLE_ADMIN') %}
+						<a class="nav-link text-light" href="{{ path("app_admin_user_index") }}">Admin</a>
+						{% endif %}
 					</div>
 					<div>
 						{% if app.user %}

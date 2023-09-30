@@ -57,7 +57,9 @@ class AppFixtures extends Fixture
             ->setRoles(["ROLE_ADMIN"])
             ->setFirstname("admin")
             ->setLastname("admin")
-            ->setPhoto("admin");
+            ->setPhoto("admin")
+            ->setContract($contracts[0])
+            ->setSector($sectors[3]);
         $manager->persist($admin);
 
         // Ajout des autres utilisateurs
@@ -73,7 +75,6 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setEmail($faker->email())
                 ->setPassword($this->hasher->hashPassword($user, "test"))
-                ->setRoles(["ROLE_USER"])
                 ->setFirstname($faker->firstName())
                 ->setLastname($faker->lastName())
                 ->setPhoto($faker->imageUrl())

@@ -21,6 +21,7 @@ class ContractRepository extends ServiceEntityRepository
         parent::__construct($registry, Contract::class);
     }
 
+
 //    /**
 //     * @return Contract[] Returns an array of Contract objects
 //     */

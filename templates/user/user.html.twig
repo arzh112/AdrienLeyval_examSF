@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+
+    <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Photo</th>
+                <td><img src="{{ user.photo }}" alt="" /></td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>sector</th>
+                <td>{{ user.sector.name }}</td>
+            </tr>
+            <tr>
+                <th>Contrat</th>
+                <td>{{ user.contract.name }}</td>
+            </tr>
+            <tr>
+                <th>EndDate</th>
+                <td>{{ user.endDate ? user.endDate|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

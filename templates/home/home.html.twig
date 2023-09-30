@@ -1,29 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}Accueil
 {% endblock %}
 
 {% block body %}
 
 	<h1 class="my-5">Bonjour
 
-        {% if is_granted('ROLE_ADMIN') %}
-        {{ user.firstname }}
-        {% else %}
-		{{ user.firstname }}
-		{{ user.lastname }}
-        {% endif %}
-        
-
-	<div class="row my-5 justify-content-around">
-
-        <button class="col-3 btn btn-success"><a class="h2 text-decoration-none link-light" href="">Détail</a></button>
-
-        {% if is_granted('ROLE_ADMIN') %}
-        <button class="col-3 btn btn-primary"><a class="h2 text-decoration-none link-light" href="">Administration</a></button>
-        {% endif %}
-
-	</div>
+		{% if is_granted('ROLE_ADMIN') %}
+			{{ connectedUser.firstname }}
+		{% else %}
+			{{ connectedUser.firstname }}
+			{{ connectedUser.lastname }}
+		{% endif %}
+        </h1>
 
 
-{% endblock %}
+		<div class="row my-5 justify-content-around">
+
+			<button class="col-3 btn btn-success">
+				<a class="text-decoration-none link-light" href="{{ path("app_user_list") }}">Liste</a>
+			</button>
+
+			{% if is_granted('ROLE_ADMIN') %}
+				<button class="col-3 btn btn-primary">
+					<a class="text-decoration-none link-light" href="{{ path("app_admin_user_index") }}">Administration</a>
+				</button>
+			{% endif %}
+
+		</div>
+		<div class="row my-5 justify-content-between">
+			{% for user in users %}
+
+				<div class="card col-3 m-2">
+
+					<img src="{{ user.photo }}" alt="" class="card-img-top" />
+
+                    <div class="card-body">
+                        <p>{{ user.firstname }}</p>
+                        <p>{{ user.lastname }}</p>
+                        <p>{{ user.email }}</p>
+                        <p>{{ user.sector.name }}</p>
+                    </div>
+				</div>
+            {% endfor %}
+			</div>
+
+		{% endblock %}
