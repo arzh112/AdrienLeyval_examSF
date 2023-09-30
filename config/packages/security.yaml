@@ -22,6 +22,14 @@ security:
                 enable_csrf: true
             logout:
                 path: app_logout
+            custom_authenticator: App\Security\AppUserAuthenticator
+            entry_point: form_login
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: true
                 # where to redirect after logout
                 # target: app_any_route
 
