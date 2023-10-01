@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Service;
 
 use App\Repository\UserRepository;
 
@@ -12,7 +12,6 @@ class UsersWhithoutAdmin
     public static function arrayUsers(UserRepository $userRepository): array {
         $allUsers = $userRepository->findAll();
         $users = [];
-        // boucle permettant d'enlever l'admin du tableau d'utilisateur
         foreach($allUsers as $user) {
             if($user->getRoles() !== ["ROLE_ADMIN", "ROLE_USER"]) {
                 $users[] = $user;

@@ -18,6 +18,11 @@ framework:
     php_errors:
         log: true
 
+    assets:
+        packages:
+            images:
+                base_path: "/uploads"
+
 when@test:
     framework:
         test: true

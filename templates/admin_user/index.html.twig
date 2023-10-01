@@ -10,12 +10,11 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Email</th>
-                <th scope="col">Roles</th>
-                <th scope="col">Password</th>
-                <th scope="col">Firstname</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">Photo</th>
-                <th scope="col">EndDate</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Secteur</th>
+                <th scope="col">Type de contrat</th>
+                <th scope="col">Fin de contrat</th>
                 <th scope="col" >actions</th>
             </tr>
         </thead>
@@ -24,11 +23,10 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.lastname }}</td>
-                <td>{{ user.photo }}</td>
+                <td>{{ user.sector.name }}</td>
+                <td>{{ user.contract.name }}</td>
                 <td>{{ user.endDate ? user.endDate|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">show</a>

@@ -77,9 +77,13 @@ class AppFixtures extends Fixture
                 ->setPassword($this->hasher->hashPassword($user, "test"))
                 ->setFirstname($faker->firstName())
                 ->setLastname($faker->lastName())
-                ->setPhoto($faker->imageUrl())
-                ->setContract($faker->randomElement($contracts))
-                ->setSector($faker->randomElement($sectors));
+                ->setPhoto("photo.jpg")
+                ->setSector($faker->randomElement($sectors))
+                ->setContract($faker->randomElement($contracts));
+            $userContract = $user->getContract();
+            if($userContract->getName() === "CDD" || $userContract->getName() === "Interim") {
+                $user->setEndDate($faker->dateTimeBetween('-2 years', '+2 years'));
+            }
             
             $manager->persist($user);
         }
