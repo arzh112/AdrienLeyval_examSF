@@ -15,7 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
     name: 'app:delete-user-finished-contract',
-    description: 'Command to delete users who finished their contract',
+    description: 'Command to delete user who finished their contract',
 )]
 class DeleteUserFinishedContractCommand extends Command
 {
@@ -58,9 +58,7 @@ class DeleteUserFinishedContractCommand extends Command
             }
         }
 
-
-
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        $io->success('Les utilisateurs ont bien été supprimés');
 
         return Command::SUCCESS;
     }
