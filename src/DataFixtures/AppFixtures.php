@@ -5,13 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Contract;
 use App\Entity\Sector;
 use App\Entity\User;
-use App\Repository\ContractRepository;
-use App\Repository\SectorRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class AppFixtures extends Fixture
 {
@@ -50,7 +47,6 @@ class AppFixtures extends Fixture
             $manager->persist($sector);
         }
 
-        // Ajout de l'utilisateur admin
         $admin = new User();
         $admin->setEmail(self::ADMIN_EMAIL)
             ->setPassword($this->hasher->hashPassword($admin, self::ADMIN_PASSWORD))
